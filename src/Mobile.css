@@ -1,0 +1,38 @@
+.img {
+  height: 100%;
+  padding: -5%;
+  margin: auto;
+  top: 10px;
+  position: left;
+  cursor: pointer;
+}
+.home__image {
+  width: 50%;
+  z-index: -1;
+  margin-bottom: -100px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+.home__row {
+  display: flex;
+  z-index: 1;
+  margin-left: 50px;
+  margin-right: 5px;
+}
+.foo {
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  color: rgb(218, 159, 50);
+
+  /* Small Devices, Tablets */
+  @media only screen and (min-width: 768px) {
+    width: 75%;
+    background-color: green;
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (min-width: 992px) {
+    width: 50%;
+    background-color: pink;
+  }
+}
