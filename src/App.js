@@ -31,27 +31,27 @@ function App() {
     useEffect(() => {
 
       auth.onAuthStateChanged(authUser => {
-        console.log('the user is >>>', authUser);
+        console.log("the user is >>>", authUser);
         if (authUser) {
 
           dispatch({
-            type: 'SET_USER',
-            user: authUser
+            type: "SET_USER",
+            user: authUser,
 
-          })
+          });
 
         }else{
 
           dispatch({
-            type: 'SET_USER',
-            user: null
-          })
+            type: "SET_USER",
+            user: null,
+          });
          
 
         }
-      })
+      });
 
-    },  [] )   
+    },  [] ); 
 
     return (
       <Router>

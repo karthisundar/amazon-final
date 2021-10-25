@@ -55,6 +55,7 @@
 
 .blink {
   background-color: #58ca71;
+  text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
   margin-top: 40px;
   font-size: 20px;
   color: rgb(230, 13, 13);
@@ -66,7 +67,7 @@
   animation: var(--blink-time) blinker linear infinite;
   -webkit-animation: var(--blink-time) blinker linear infinite;
   -moz-animation: var(--blink-time) blinker linear infinite;
-  --blink-time: 2s;
+  --blink-time: 4s;
 }
 
 @-moz-keyframes blinker {

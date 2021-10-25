@@ -16,6 +16,19 @@
   border-color: #a88734, #9c7e31, #846a29;
   color: #111;
 }
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}
 .checkoutProduct__image {
   object-fit: contain;
   height: 180px;

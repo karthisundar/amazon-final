@@ -10,19 +10,17 @@ import axios from "./axios";
 import { db } from "./firebase";
 
 function Payment() {
-  const history = useHistory();
-  const [{ user, basket }, dispatch] = useStateValue();
-  
- 
-  const stripe = useStripe();
-  const elements = useElements();
+  const [{ basket, user }, dispatch] = useStateValue();
+    const history = useHistory();
 
-  const [succeeded, setSucceeded] = useState( );
-  const [processing, setProcessing] = useState("");
-  const [error, setError] = useState(null);
-  const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState( );
+    const stripe = useStripe();
+    const elements = useElements();
 
+    const [succeeded, setSucceeded] = useState(false);
+    const [processing, setProcessing] = useState("");
+    const [error, setError] = useState(null);
+    const [disabled, setDisabled] = useState(true);
+    const [clientSecret, setClientSecret] = useState(true);
   
 
   useEffect(() => {
@@ -38,40 +36,41 @@ function Payment() {
   }, [basket]);
 
   console.log("[CLIENTSECRET]", clientSecret);
+  console.log('👱', user)
 
   const handleSubmit = async (event) => {
-   event. preventDefault();
+   event.preventDefault();
     setProcessing(true);
 
-    const payload = await stripe
-      .confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-      })
-      .then(({ paymentIntent }) => {
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+          card: elements.getElement(CardElement)
+      }
+  }).then(({ paymentIntent }) => {
 
-        db.collection("users")
-          .doc(user?.uid)
-          .collection("orders")
-          .doc(paymentIntent.id)
-          .set({
-            basket,
+      db
+        .collection('users')
+        .doc(user?.uid)
+        .collection('orders')
+        .doc(paymentIntent.id)
+        .set({
+            basket: basket,
             amount: paymentIntent.amount,
-            created: paymentIntent.created,
-          });
+            created: paymentIntent.created
+        })
 
-        setSucceeded(true);
-        setError(null);
-        setProcessing(false);
+      setSucceeded(true);
+      setError(null)
+      setProcessing(false)
 
-        dispatch({
-          type: "EMPTY_BASKET",
-        });
+      dispatch({
+          type: 'EMPTY_BASKET'
+      })
 
-        history.replace("/orders");
-      });
-  };
+      history.replace('/orders')
+  })
+
+}
 
   const handleChange = (event) => {
     setDisabled(event.empty);
@@ -121,7 +120,7 @@ function Payment() {
               <CardElement onChange={handleChange} />
               <div className="payment__priceContainer">
                 <CurrencyFormat
-                  renderText={(value) => <h3>Order Total: {value}</h3>}
+                  renderText={(value) => ( <h3>Order Total: {value}</h3>)}
                   decimalScale={2}
                   value={getBasketTotal(basket)}
                   displayType={"text"}

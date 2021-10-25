@@ -13,10 +13,10 @@
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 .home__row {
+  background-color: rgb(172, 126, 67);
   display: flex;
-  z-index: 1;
-  margin-left: 50px;
-  margin-right: 5px;
+  z-index: 0;
+  border-radius: 20px;
 }
 .foo {
   width: 100%;
@@ -35,4 +35,17 @@
     width: 50%;
     background-color: pink;
   }
+}
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: blue;
 }

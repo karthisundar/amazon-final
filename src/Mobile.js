@@ -11,24 +11,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Mobile() {
     return (
-
-        
-        
-
-            <div className="foo">
-            <Zoom>
+<div className="a">
+      <div className="home__container">
+                    <div className="foo">
+                    <Zoom>
   <img className="foo" src="https://m.media-amazon.com/images/I/710xLKSIAaL._SX3000_.jpg" />
 </Zoom> 
-<div className="home">
 
-            </div>
-        <div className="home__container">
+                    <div className="home__row">
+    
+
+   
+
             
     
           
   
   
-          <div className="home__row">
             <Product
               id="12321341"
               title="Apple iPhone 11 (64GB) - Black"
@@ -82,9 +81,12 @@ function Mobile() {
               rating={4}
               image="https://fdn2.gsmarena.com/vv/pics/vivo/vivo-iqoo-z5x-1.jpg"
             />
+            </div>
           </div>
         </div>
-      </div>    )
+        </div>
+         )
 }
+
 
 export default Mobile
