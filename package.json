@@ -1,6 +1,7 @@
 {
   "name": "amazon-clone",
- "version": "0.1.0",
+  "engines": {
+    "node": "14.0"
   "private": true,
 },
   "engineStrict" : true,
